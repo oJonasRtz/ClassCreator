@@ -1,25 +1,39 @@
 #!/bin/bash
 
 #Check input
-if [ -z "$1" ]; then
-	echo "How to use: ./createFolder.sh <folder name>"
+# $# == Argc
+if [ $# -lt 2 ]; then
+	echo "How to use: ./createFolder.sh <folder name> <class name>"
 	exit 1
 fi
 
 FOLDERNAME=$1
+CLASSNAME=$2
 
 mkdir -p $FOLDERNAME
 mkdir -p $FOLDERNAME/src
 mkdir -p $FOLDERNAME/includes
-cat > "$FOLDERNAME/Makefile" << EOF
-NAME =
+cat > $FOLDERNAME/src/main.cpp << EOF
+#include <iostream>
+
+int	main(void)
+{
+	std::cout << "Hello world\n";
+	return (0);
+}
+
+EOF
+
+cat > $FOLDERNAME/Makefile << EOF
+NAME=temp
 TESTS = 5
 
 CC = c++
 FLAGS = -g3 -Wall -Werror -Wextra -std=c++98
 
 INCLUDE = includes
-SRC =	main.cpp
+SRC =	${CLASSNAME}.cpp\\
+		main.cpp
 SRCS = \$(addprefix src/, \$(SRC))
 OBJS = \$(SRCS:.cpp=.o)
 
@@ -61,3 +75,10 @@ re: fclean all
 
 .PHONY: all clean fclean re run
 EOF
+
+
+#Creates class
+./createClass.sh $CLASSNAME
+
+mv ${CLASSNAME}.cpp  $FOLDERNAME/src
+mv ${CLASSNAME}.hpp  $FOLDERNAME/includes

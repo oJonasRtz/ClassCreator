@@ -6,4 +6,4 @@ It creates a .cpp and .hpp files with the specified class name.
 # How to use
 
 Execute:
-  ./createClass.sh <ClassName>
+  ./createClass.sh "ClassName"

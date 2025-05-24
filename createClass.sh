@@ -17,4 +17,7 @@ sed -i "s/ClassTemplate/${CLASSNAME}/g" ${CLASSNAME}.hpp
 sed -i "s/ClassTemplate/${CLASSNAME}/g" ${CLASSNAME}.cpp
 sed -i "s/CLASSTEMPLATE_HPP/$(echo ${CLASSNAME} | tr '[:lower:]' '[:upper:]')_HPP/g" ${CLASSNAME}.hpp
 
+mv ${CLASSNAME}.hpp ${FOLDER}/includes
+mv ${CLASSNAME}.cpp ${FOLDER}/src
+
 echo "Class ${CLASSNAME} successfuly created!"

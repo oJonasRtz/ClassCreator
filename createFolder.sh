@@ -7,8 +7,13 @@ if [ $# -lt 2 ]; then
 	exit 1
 fi
 
+#Names
 FOLDERNAME=$1
 CLASSNAME=$2
+
+#Colours
+ORANGE='\033[38;5;208m'
+RESET='\033[0m'
 
 mkdir -p $FOLDERNAME
 mkdir -p $FOLDERNAME/src
@@ -54,9 +59,6 @@ run: all
 test: all
 	@for i in \$(shell seq 1 \$(TESTS)); do \\
 		valgrind ./\$(NAME) \$\$i; \\
-		if [ \$\$i -eq 3 ]; then \\
-			cat test_shrubbery; \\
-		fi; \\
 	done
 
 clean:
@@ -73,12 +75,10 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re run
+.PHONY: all clean fclean re run test
 EOF
 
+echo -e "Folder: ${ORANGE}${FOLDERNAME}${RESET} successfuly created!"
 
 #Creates class
-./createClass.sh $CLASSNAME
-
-mv ${CLASSNAME}.cpp  $FOLDERNAME/src
-mv ${CLASSNAME}.hpp  $FOLDERNAME/includes
+./createClass.sh $CLASSNAME $FOLDERNAME

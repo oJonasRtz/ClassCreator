@@ -3,9 +3,9 @@
 static void	drawTitle(const std::string &title, bool orange)
 {
 	if (orange)
-		std::cout << ORANGE << std::string(30, '=') << "\n\t" << title << "\n" << std::string(30, '=') << RESET << std::endl;
+		std::cout << ORANGE << std::string(LINE, '=') << "\n\t" << title << "\n" << std::string(LINE, '=') << RESET << std::endl;
 	else
-		std::cout << std::string(30, '=') << "\n\t" << title << "\n" << std::string(30, '=') << std::endl;
+		std::cout << std::string(LINE, '=') << "\n\t" << title << "\n" << std::string(LINE, '=') << std::endl;
 }
 
 int	main(void)

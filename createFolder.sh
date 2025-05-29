@@ -18,16 +18,6 @@ RESET='\033[0m'
 mkdir -p $FOLDERNAME
 mkdir -p $FOLDERNAME/src
 mkdir -p $FOLDERNAME/includes
-cat > $FOLDERNAME/src/main.cpp << EOF
-#include <iostream>
-
-int	main(void)
-{
-	std::cout << "Hello world\n";
-	return (0);
-}
-
-EOF
 
 cat > $FOLDERNAME/Makefile << EOF
 NAME=temp
@@ -79,6 +69,11 @@ re: fclean all
 EOF
 
 echo -e "Folder: ${ORANGE}${FOLDERNAME}${RESET} successfuly created!"
+
+#Create main
+cp mainTemplate.cpp main.cpp
+sed -i "s/ClassTemplate/${CLASSNAME}/g" main.cpp
+mv main.cpp ${FOLDERNAME}/src
 
 #Creates class
 ./createClass.sh $CLASSNAME $FOLDERNAME

@@ -12,8 +12,9 @@ ClassTemplate::ClassTemplate(const ClassTemplate &other)
 ClassTemplate&	ClassTemplate::operator=(const ClassTemplate &other)
 {
 	std::cout << BRIGHT_GREEN "ClassTemplate: assignment operator\n" RESET;
-	if (this != &other)
+	// if (this != &other)
 		/*	copy	*/
+	(void)other;
 	return (*this);
 }
 ClassTemplate::~ClassTemplate()

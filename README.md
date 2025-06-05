@@ -7,3 +7,4 @@ This script aims to generate a skeleton class that follows the Canonical Orthodo
 
 Execute:  
     <pre markdown="1">$> ./createClass.sh \<ClassName\> </pre>
+    <pre markdown="2">$> ./createFolder.sh \<folder name\> \<class name\></pre>

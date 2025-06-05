@@ -43,10 +43,10 @@ src/%.o: src/%.cpp
 	@echo "\033[1;32mCompiling	->	\$<\033[0m"
 	@\$(CC) \$(FLAGS) -I\$(INCLUDE) -c \$< -o \$@
 
-run: all
+run: re
 	@valgrind ./\$(NAME)
 
-test: all
+test: run
 	@for i in \$(shell seq 1 \$(TESTS)); do \\
 		valgrind ./\$(NAME) \$\$i; \\
 	done
